@@ -1,7 +1,7 @@
 {
   "name": "atom-import-sort",
   "main": "./lib/atom-import-sort",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Sort ES6 imports. Manually – or automatically when you save your Javascript files.",
   "keywords": [],
   "repository": "https://github.com/renke/atom-import-sort",
