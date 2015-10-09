@@ -10,7 +10,7 @@ module.exports =
       title: 'Sort on save'
       description: 'Automatically sort your Javascript files when you save them.'
       type: 'boolean'
-      default: true
+      default: false
 
   activate: ->
     atom.config.observe "atom-import-sort.sortOnSave", (sortOnSave) =>
