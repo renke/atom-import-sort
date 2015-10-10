@@ -2,6 +2,8 @@
 
 Sort ES6 imports. Manually – or automatically when you save your Javascript files.
 
+![Screencast](https://github.com/renke/atom-import-sort/blob/master/media/atom-import-sort.gif?raw=true)
+
 This package does **not** sort `require` calls. Only ES6-style imports are supported as of now. Support for `require` may be added later, but it's generally harder to do this compared to imports.
 
 # Installation
