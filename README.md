@@ -12,7 +12,7 @@ This package does **not** sort `require` calls. Only ES6-style imports are suppo
 
 # Usage
 
-Use  <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>o</kbd> or the `Import Sort: Sort` command to sort imports on demand. Make sure you are actually editing a file that uses the `js` grammar (I highly recommand [language-babel](https://atom.io/packages/language-babel)).
+Use  <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>o</kbd> or the `Import Sort: Sort` command to sort imports on demand. Make sure you are actually editing a file that uses the `js` grammar (I highly recommend [language-babel](https://atom.io/packages/language-babel)).
 
 Imports can also be sorted automatically on save when `Save on sort` is enabled in the package's settings. This is disabled by default because it's annoying at times.
 
