@@ -41,3 +41,7 @@ import {CC} from "./C"
 ```
 
 Eventually I want to support different layouts that can be chosen in the setting's page or on a per-project basis. Suggestions for other layouts are always welcome.
+
+## License ##
+
+See [LICENSE](LICENSE).

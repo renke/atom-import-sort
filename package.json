@@ -9,7 +9,7 @@
     "sort"
   ],
   "repository": "https://github.com/renke/atom-import-sort",
-  "license": "MIT",
+  "license": "ISC",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
