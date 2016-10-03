@@ -14,6 +14,6 @@ export declare class Plugin {
     deactivate(): void;
     private observeEditors();
     private unobserveEditors();
-    private sortEditor(editor);
+    private sortEditor(editor, notifyErrors?);
     private sortCurrentEditor();
 }
