@@ -1,10 +1,10 @@
 import "atom";
 
-import {allowUnsafeEval, allowUnsafeNewFunction} from "loophole";
 import {dirname, extname} from "path";
-import sortImports, {ICodeChange} from "import-sort";
 
+import sortImports, {ICodeChange} from "import-sort";
 import {getConfig} from "import-sort-config";
+import {allowUnsafeEval, allowUnsafeNewFunction} from "loophole";
 
 // tslint:disable-next-line
 const CompositeDisposable = require("atom").CompositeDisposable;
@@ -115,7 +115,7 @@ export class Plugin {
         return;
       }
 
-      const {parser, style} = sortConfig;
+      const {parser, style, config: rawConfig} = sortConfig;
 
       if (!parser || !style) {
         if (!parser && !notifyErrors) {
@@ -136,7 +136,7 @@ export class Plugin {
 
       allowUnsafeNewFunction(() => {
         allowUnsafeEval(() => {
-          changes = sortImports(unsorted, parser!, style!, path).changes;
+          changes = sortImports(unsorted, parser!, style!, path, rawConfig.options).changes;
         });
       });
 
