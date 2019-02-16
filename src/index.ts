@@ -1,17 +1,15 @@
-import "atom";
-
 import {dirname, extname} from "path";
 
+import {CompositeDisposable, TextEditor} from "atom"; // eslint-disable-line
 import sortImports, {ICodeChange} from "import-sort";
 import {getConfig} from "import-sort-config";
 import {allowUnsafeEval, allowUnsafeNewFunction} from "loophole";
 
-// tslint:disable-next-line
-const CompositeDisposable = require("atom").CompositeDisposable;
-
+// eslint-disable-next-line
 export class Plugin {
-  public bufferWillSaveDisposables?;
-  public editorObserverDisposable?;
+  public bufferWillSaveDisposables;
+
+  public editorObserverDisposable;
 
   public config = {
     sortOnSave: {
@@ -23,8 +21,8 @@ export class Plugin {
     },
   };
 
-  public activate(state) {
-    (atom.config as any).observe(
+  public activate() {
+    atom.config.observe(
       "atom-import-sort.sortOnSave",
       (sortOnSave: boolean) => {
         if (sortOnSave) {
@@ -72,6 +70,7 @@ export class Plugin {
     }
   }
 
+  // eslint-disable-next-line
   private sortEditor(editor, notifyErrors = false) {
     const scopeDescriptor = editor.getRootScopeDescriptor();
 
@@ -105,7 +104,7 @@ export class Plugin {
         extension = ".ts";
       }
 
-      directory = (atom.project as any).getPaths()[0];
+      [directory] = atom.project.getPaths();
     }
 
     if (!extension) {
@@ -146,21 +145,21 @@ export class Plugin {
       const cursor = editor.getCursorBufferPosition();
       const unsorted = editor.getText();
 
-      let changes: Array<ICodeChange>;
+      let changes: ICodeChange[];
 
       allowUnsafeNewFunction(() => {
         allowUnsafeEval(() => {
-          changes = sortImports(
+          ({changes} = sortImports(
             unsorted,
-            parser!,
-            style!,
+            parser,
+            style,
             path,
             rawConfig.options,
-          ).changes;
+          ));
         });
       });
 
-      (editor as AtomCore.IEditor).transact(() => {
+      (editor as TextEditor).transact(() => {
         for (const change of changes) {
           const start = editor.buffer.positionForCharacterIndex(change.start);
           const end = editor.buffer.positionForCharacterIndex(change.end);

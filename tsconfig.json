@@ -1,9 +1,18 @@
 {
-  "compileOnSave": false,
+  "extends": "../tsconfig.settings.json",
 
   "compilerOptions": {
-    "target": "es6",
-    "strictNullChecks": true,
-    "declaration": true
-  }
+    "outDir": "lib",
+    "rootDir": "src"
+  },
+
+  "include": ["src"],
+
+  "references": [
+    {"path": "../import-sort-parser"},
+    {"path": "../import-sort-config"},
+    {"path": "../import-sort-parser-babylon"},
+    {"path": "../import-sort-parser-typescript"},
+    {"path": "../import-sort-style-eslint"}
+  ]
 }
